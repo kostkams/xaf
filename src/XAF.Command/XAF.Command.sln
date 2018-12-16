@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XAF.Command", "XAF.Command\XAF.Command.csproj", "{450EB96E-7CAD-4BB5-85C3-A0B4FCA96520}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", "{62A8AC7B-AB58-44BB-8B81-5377734318FB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XAF.Autofac", "..\XAF.Autofac\XAF.Autofac\XAF.Autofac.csproj", "{969EB498-78DC-42AB-B696-C0AD0EF63B47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{450EB96E-7CAD-4BB5-85C3-A0B4FCA96520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{450EB96E-7CAD-4BB5-85C3-A0B4FCA96520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{450EB96E-7CAD-4BB5-85C3-A0B4FCA96520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{450EB96E-7CAD-4BB5-85C3-A0B4FCA96520}.Release|Any CPU.Build.0 = Release|Any CPU
+		{969EB498-78DC-42AB-B696-C0AD0EF63B47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{969EB498-78DC-42AB-B696-C0AD0EF63B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{969EB498-78DC-42AB-B696-C0AD0EF63B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{969EB498-78DC-42AB-B696-C0AD0EF63B47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{969EB498-78DC-42AB-B696-C0AD0EF63B47} = {62A8AC7B-AB58-44BB-8B81-5377734318FB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ECC7AC46-F072-474D-95CD-E1F15D09046E}
+	EndGlobalSection
+EndGlobal

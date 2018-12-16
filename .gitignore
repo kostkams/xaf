@@ -1,0 +1,14 @@
+src/XAF.Autofac/.vs/
+src/XAF.Autofac/XAF.Autofac/bin/
+src/XAF.Autofac/XAF.Autofac/obj/
+src/XAF.UI/.vs/
+src/XAF.UI/XAF.UI/bin/
+src/XAF.UI/XAF.UI/obj/
+src/XAF.Command/XAF.Command/obj/
+src/XAF.Command/.vs/
+src/XAF.Command/XAF.Command/bin/
+src/XAF.Core/XAF.Core.Module/obj/
+src/XAF.Core/XAF.Core.Module/bin/
+src/XAF.Core/XAF.Core/bin/
+src/XAF.Core/XAF.Core/obj/
+src/XAF.Core/.vs/
