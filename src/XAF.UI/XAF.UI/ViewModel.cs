@@ -4,9 +4,7 @@ using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using Autofac;
-using Syncfusion.XForms.DataForm;
 using XAF.Autofac;
-using XAF.Command;
 
 namespace XAF.UI
 {
@@ -15,11 +13,18 @@ namespace XAF.UI
         protected ViewModel()
         {
             ViewModelDescriptors = new List<IViewModelDescriptor>();
-            CommandFactory = ServiceLocator.Current.Resolve<ICommandFactory>();
+            CommandFactory = ServiceLocator.Current.Resolve<IViewCommandFactory>();
         }
 
         private IList<IViewModelDescriptor> ViewModelDescriptors { get; }
-        
+
+        public DataTemplateSelector DataTemplateSelector => new DataTemplateSelector(ViewModelDescriptors);
+
+        protected IViewCommandFactory CommandFactory { get; }
+
+
+        private IViewModelFactory ViewModelFactory => ServiceLocator.Current.Resolve<IViewModelFactory>();
+
 
         public void RegisterViewModelDescriptor(IViewModelDescriptor viewModelDescriptor)
         {
@@ -28,21 +33,13 @@ namespace XAF.UI
 
         public void RegisterViewModelDescriptors(IList<IViewModelDescriptor> viewModelDescriptors)
         {
-            ((List<IViewModelDescriptor>)ViewModelDescriptors).AddRange(viewModelDescriptors);
+            ((List<IViewModelDescriptor>) ViewModelDescriptors).AddRange(viewModelDescriptors);
         }
-
-        [Display(AutoGenerateField = false)]
-        public ICommandFactory CommandFactory { get; }
-
-        public DataTemplateSelector DataTemplateSelector => new DataTemplateSelector(ViewModelDescriptors);
-
 
         public T CreateViewModel<T>() where T : IViewModel
         {
             return ViewModelFactory.Create<T>();
         }
-
-        private IViewModelFactory ViewModelFactory => ServiceLocator.Current.Resolve<IViewModelFactory>();
 
         protected void Set<T>(ref T value, T newValue, Expression<Func<T>> property)
         {
@@ -67,7 +64,7 @@ namespace XAF.UI
             if (property.Body is MemberExpression memberExpression)
                 OnPropertyChanged(memberExpression.Member.Name);
         }
-        
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

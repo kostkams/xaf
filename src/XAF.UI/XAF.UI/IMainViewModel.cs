@@ -2,8 +2,8 @@
 {
     public interface IMainViewModel : IViewModel
     {
-        IViewModel Content { get; set; }
-
         bool IsBusy { get; set; }
+
+        IViewModel SubViewModel { get; set; }
     }
 }

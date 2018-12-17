@@ -6,7 +6,6 @@ namespace XAF.UI
 {
     public interface IViewModel : INotifyPropertyChanged
     {
-        ICommandFactory CommandFactory { get; }
 
         void RegisterViewModelDescriptor(IViewModelDescriptor viewModelDescriptor);
 

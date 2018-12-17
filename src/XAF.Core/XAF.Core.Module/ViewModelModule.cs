@@ -16,6 +16,9 @@ namespace XAF.Core.Module
             builder.Register<IMainViewModel>(c => new MainViewModel())
                    .OnActivated(handler => handler.Instance.RegisterViewModelDescriptors(handler.Context.Resolve<IList<IViewModelDescriptor>>()))
                    .SingleInstance();
+
+            builder.Register<IViewCommandFactory>(c => new ViewCommandFactory())
+                   .InstancePerDependency();
         }
     }
 }

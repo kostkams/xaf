@@ -35,17 +35,30 @@ namespace XAF.RestClient
             });
         }
 
-        public T Get<T>(Uri uri)
+        public object Get(Uri uri)
+        {
+            if (IsLoggedIn && client?.DefaultRequestHeaders.Authorization == null)
+                return null;
+
+            object result = null;
+            AsyncHelpers.RunSync(async () =>
+            {
+                var response = await client.GetAsync(uri);
+                if (!response.IsSuccessStatusCode)
+                    throw new HttpRequestException(await response.Content.ReadAsStringAsync());
+
+                result = JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync());
+            });
+
+            return result;
+        }
+
+        public object Post(Uri uri, object content)
         {
             throw new NotImplementedException();
         }
 
-        public T Post<T>(Uri uri, object content)
-        {
-            throw new NotImplementedException();
-        }
-
-        public T Patch<T>(Uri uri, object content)
+        public object Patch(Uri uri, object content)
         {
             throw new NotImplementedException();
         }

@@ -9,11 +9,11 @@ namespace XAF.RestClient
 
         void Login(Uri uri, object credentials);
 
-        T Get<T>(Uri uri);
+        object Get(Uri uri);
 
-        T Post<T>(Uri uri, object content);
+        object Post(Uri uri, object content);
 
-        T Patch<T>(Uri uri, object content);
+        object Patch(Uri uri, object content);
 
         bool Delete(Uri uri);
 
