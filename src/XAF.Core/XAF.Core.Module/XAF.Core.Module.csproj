@@ -1,11 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\XAF.Command\XAF.Command\XAF.Command.csproj" />
+    <ProjectReference Include="..\..\XAF.RestClient\XAF.RestClient\XAF.RestClient.csproj" />
     <ProjectReference Include="..\..\XAF.UI\XAF.UI\XAF.UI.csproj" />
   </ItemGroup>
 

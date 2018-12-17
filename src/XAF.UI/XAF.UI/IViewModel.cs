@@ -12,6 +12,6 @@ namespace XAF.UI
 
         void RegisterViewModelDescriptors(IList<IViewModelDescriptor> viewModelDescriptors);
 
-        IViewModel CreateViewModel<T>() where T : IViewModel;
+        T CreateViewModel<T>() where T : IViewModel;
     }
 }

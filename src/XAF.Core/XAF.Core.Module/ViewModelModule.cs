@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using System.Collections.Generic;
+using Autofac;
 using XAF.UI;
 
 namespace XAF.Core.Module
@@ -10,6 +11,10 @@ namespace XAF.Core.Module
             base.Load(builder);
 
             builder.Register<IViewModelFactory>(c => new ViewModelFactory())
+                   .SingleInstance();
+
+            builder.Register<IMainViewModel>(c => new MainViewModel())
+                   .OnActivated(handler => handler.Instance.RegisterViewModelDescriptors(handler.Context.Resolve<IList<IViewModelDescriptor>>()))
                    .SingleInstance();
         }
     }

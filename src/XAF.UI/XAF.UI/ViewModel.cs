@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using Autofac;
+using Syncfusion.XForms.DataForm;
 using XAF.Autofac;
 using XAF.Command;
 
@@ -30,10 +31,13 @@ namespace XAF.UI
             ((List<IViewModelDescriptor>)ViewModelDescriptors).AddRange(viewModelDescriptors);
         }
 
+        [Display(AutoGenerateField = false)]
         public ICommandFactory CommandFactory { get; }
 
+        public DataTemplateSelector DataTemplateSelector => new DataTemplateSelector(ViewModelDescriptors);
 
-        public IViewModel CreateViewModel<T>() where T : IViewModel
+
+        public T CreateViewModel<T>() where T : IViewModel
         {
             return ViewModelFactory.Create<T>();
         }

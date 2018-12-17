@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XAF.RestClient", "XAF.RestClient\XAF.RestClient.csproj", "{2DB1A149-2EC8-453C-AE5F-BCD0FE3AACA3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2DB1A149-2EC8-453C-AE5F-BCD0FE3AACA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DB1A149-2EC8-453C-AE5F-BCD0FE3AACA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DB1A149-2EC8-453C-AE5F-BCD0FE3AACA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DB1A149-2EC8-453C-AE5F-BCD0FE3AACA3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC7FA6A8-DB90-4020-9011-42B3F4ACAC48}
+	EndGlobalSection
+EndGlobal

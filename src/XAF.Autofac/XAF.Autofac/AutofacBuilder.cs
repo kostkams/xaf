@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using Autofac;
 using Autofac.Core;
-using Module = System.Reflection.Module;
+using Module = Autofac.Module;
 
 namespace XAF.Autofac
 {

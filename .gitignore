@@ -12,3 +12,7 @@ src/XAF.Core/XAF.Core.Module/bin/
 src/XAF.Core/XAF.Core/bin/
 src/XAF.Core/XAF.Core/obj/
 src/XAF.Core/.vs/
+src/XAF.RestClient/.vs/
+src/XAF.RestClient/XAF.RestClient/bin/
+src/XAF.RestClient/XAF.RestClient/obj/
+target/

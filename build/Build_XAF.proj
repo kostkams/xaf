@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build">
+  <PropertyGroup>
+    <SourceDir>..\src</SourceDir>
+    <TargetDir>..\target</TargetDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <CSProjects Include="$(SourceDir)\XAF.Autofac\**\*.csproj"/>
+    <CSProjects Include="$(SourceDir)\XAF.Command\**\*.csproj"/>
+    <CSProjects Include="$(SourceDir)\XAF.Core\**\*.csproj"/>
+    <CSProjects Include="$(SourceDir)\XAF.UI\**\*.csproj"/>
+
+    <FrameworkFiles Include="$(SourceDir)\XAF.Autofac\XAF.Autofac\bin\$(Configuration)\netstandard2.0\XAF.Autofac.dll"/>
+    <FrameworkFiles Include="$(SourceDir)\XAF.Autofac\XAF.Autofac\bin\$(Configuration)\netstandard2.0\XAF.Autofac.pdb"/>
+    <FrameworkFiles Include="$(SourceDir)\XAF.Autofac\XAF.Autofac\bin\$(Configuration)\netstandard2.0\XAF.Autofac.deps.json"/>
+                                                                                                   
+    <FrameworkFiles Include="$(SourceDir)\XAF.Command\XAF.Command\bin\$(Configuration)\netstandard2.0\XAF.Command.dll"/>
+    <FrameworkFiles Include="$(SourceDir)\XAF.Command\XAF.Command\bin\$(Configuration)\netstandard2.0\XAF.Command.pdb"/>
+    <FrameworkFiles Include="$(SourceDir)\XAF.Command\XAF.Command\bin\$(Configuration)\netstandard2.0\XAF.Command.deps.json"/>
+                                        
+    <FrameworkFiles Include="$(SourceDir)\XAF.Core\XAF.Core\bin\$(Configuration)\netstandard2.0\XAF.Core.dll"/>
+    <FrameworkFiles Include="$(SourceDir)\XAF.Core\XAF.Core\bin\$(Configuration)\netstandard2.0\XAF.Core.pdb"/>
+    <FrameworkFiles Include="$(SourceDir)\XAF.Core\XAF.Core\bin\$(Configuration)\netstandard2.0\XAF.Core.deps.json"/>
+    <FrameworkFiles Include="$(SourceDir)\XAF.Core\XAF.Core.Module\bin\$(Configuration)\netstandard2.0\XAF.Core.Module.dll"/>
+    <FrameworkFiles Include="$(SourceDir)\XAF.Core\XAF.Core.Module\bin\$(Configuration)\netstandard2.0\XAF.Core.Module.pdb"/>
+    <FrameworkFiles Include="$(SourceDir)\XAF.Core\XAF.Core.Module\bin\$(Configuration)\netstandard2.0\XAF.Core.Module.deps.json"/>
+                                        
+    <FrameworkFiles Include="$(SourceDir)\XAF.UI\XAF.UI\bin\$(Configuration)\netstandard2.0\XAF.UI.dll"/>
+    <FrameworkFiles Include="$(SourceDir)\XAF.UI\XAF.UI\bin\$(Configuration)\netstandard2.0\XAF.UI.pdb"/>
+    <FrameworkFiles Include="$(SourceDir)\XAF.UI\XAF.UI\bin\$(Configuration)\netstandard2.0\XAF.UI.deps.json"/>
+
+    <FrameworkFiles Include="$(SourceDir)\XAF.RestClient\XAF.RestClient\bin\$(Configuration)\netstandard2.0\XAF.RestClient.dll"/>
+    <FrameworkFiles Include="$(SourceDir)\XAF.RestClient\XAF.RestClient\bin\$(Configuration)\netstandard2.0\XAF.RestClient.pdb"/>
+    <FrameworkFiles Include="$(SourceDir)\XAF.RestClient\XAF.RestClient\bin\$(Configuration)\netstandard2.0\XAF.RestClient.deps.json"/>
+  </ItemGroup>
+
+  <Target Name="Build">
+    <RemoveDir Directories="$(TargetDir)\XAF" />
+
+    <MSBuild Projects="@(CSProjects)" Targets="Clean" StopOnFirstFailure="true" BuildInParallel="true" Properties="NoCopyToTarget=true" />
+    <MSBuild Projects="@(CSProjects)" Targets="Build" StopOnFirstFailure="true" BuildInParallel="true" Properties="NoCopyToTarget=true" />
+
+    <Copy SourceFiles="@(FrameworkFiles)" DestinationFolder="$(TargetDir)\XAF" ContinueOnError="false"/>
+  </Target>
+</Project>

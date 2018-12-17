@@ -10,14 +10,14 @@ namespace XAF.UI
         private static readonly Dictionary<Type, ILifetimeScope> LifetimeScopeLookups =
             new Dictionary<Type, ILifetimeScope>();
 
-        public IViewModel Create<T>() where T : IViewModel
+        public T Create<T>() where T : IViewModel
         {
             ILifetimeScope lifetime;
             if (LifetimeScopeLookups.ContainsKey(typeof(T)))
                 lifetime = LifetimeScopeLookups[typeof(T)];
             else
                 lifetime = ServiceLocator.Current.BeginLifetimeScope();
-            var viewModel = (IViewModel) lifetime.Resolve<T>();
+            var viewModel = lifetime.Resolve<T>();
 
 
             if (!LifetimeScopeLookups.ContainsKey(typeof(T)))
