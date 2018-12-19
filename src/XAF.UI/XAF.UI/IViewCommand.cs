@@ -1,14 +1,17 @@
-﻿using System;
+﻿using System.Threading.Tasks;
 
 namespace XAF.UI
 {
     public interface IViewCommand
     {
-        void Run(Action action);
+        Task Run();
+        Task Run(bool withBusy);
     }
 
     public interface IViewCommand<T>
     {
-        void Run(Action<T> action);
+        Task<T> Run();
+
+        Task<T> Run(bool withBusy);
     }
 }

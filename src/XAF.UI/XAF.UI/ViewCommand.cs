@@ -19,21 +19,21 @@ namespace XAF.UI
 
         private IViewModelFactory ViewModelFactory => ServiceLocator.Current.Resolve<IViewModelFactory>();
 
-        public void Run(Action action)
+        public async Task Run()
+        {
+            await Run(true);
+        }
+
+        public async Task Run(bool withBusy)
         {
             var mainViewModel = ServiceLocator.Current.Resolve<IMainViewModel>();
-            if (mainViewModel != null)
+            if (mainViewModel != null && withBusy)
                 mainViewModel.IsBusy = true;
 
-            Task.Run(() => { RunCommand(); })
-                .ContinueWith(task =>
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        action?.Invoke();
+            await RunCommand();
 
-                        if (mainViewModel != null)
-                            mainViewModel.IsBusy = false;
-                    }));
+            if (mainViewModel != null && withBusy)
+                mainViewModel.IsBusy = false;
         }
 
         protected T CreateViewModel<T>() where T : IViewModel
@@ -41,7 +41,7 @@ namespace XAF.UI
             return ViewModelFactory.Create<T>();
         }
 
-        protected abstract void RunCommand();
+        protected abstract Task RunCommand();
     }
 
     public abstract class ViewCommand<T> : IViewCommand<T>
@@ -55,21 +55,23 @@ namespace XAF.UI
 
         private IViewModelFactory ViewModelFactory => ServiceLocator.Current.Resolve<IViewModelFactory>();
 
-        public void Run(Action<T> action)
+        public async Task<T> Run()
+        {
+            return await Run(true);
+        }
+
+        public async Task<T> Run(bool withBusy)
         {
             var mainViewModel = ServiceLocator.Current.Resolve<IMainViewModel>();
-            if (mainViewModel != null)
+            if (mainViewModel != null && withBusy)
                 mainViewModel.IsBusy = true;
 
-            Task.Run(() => RunCommand())
-                .ContinueWith(task =>
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        action?.Invoke(task.Result);
+            var result = await RunCommand();
 
-                        if (mainViewModel != null)
-                            mainViewModel.IsBusy = false;
-                    }));
+            if (mainViewModel != null && withBusy)
+                mainViewModel.IsBusy = false;
+
+            return result;
         }
 
         protected T CreateViewModel<T>() where T : IViewModel
@@ -77,6 +79,6 @@ namespace XAF.UI
             return ViewModelFactory.Create<T>();
         }
 
-        protected abstract T RunCommand();
+        protected abstract Task<T> RunCommand();
     }
 }
